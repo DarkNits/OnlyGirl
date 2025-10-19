@@ -67,6 +67,282 @@
     backdrop-filter: blur(8px);
     border-radius: 12px;
     padding: 1.5rem;
+    box-shadow: 0 0 12px #3399ffaa;
+  }
+  .profile-pic {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 9999px;
+    overflow: hidden;
+    filter: blur(10px) brightness(0.6);
+    cursor: not-allowed;
+    box-shadow: 0 0 8px #3399ffaa inset;
+  }
+  .profile-pic::after {
+    content: "🔒";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #66b0ffcc;
+    text-shadow: 0 0 10px #66b0ff;
+    pointer-events: none;
+  }
+  .profile-info {
+    flex: 1;
+    min-width: 280px;
+  }
+  .profile-info h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #66b0ff;
+    text-shadow:
+      0 0 10px #3399ff,
+      0 0 20px #66b0ff;
+    margin-bottom: 0.3rem;
+    user-select: none;
+  }
+  .profile-info p {
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+  .private-msg {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #99bbff;
+    user-select: none;
+  }
+  .gallery {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.5rem;
+  }
+  .photo-card {
+    position: relative;
+    background: rgba(0, 31, 63, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #1a3a66cc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .photo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #3399ffcc;
+  }
+  .photo-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    filter: blur(18px) brightness(0.4);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+  .photo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(51,153,255,0.2));
+    backdrop-filter: blur(3px);
+  }
+  .lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.2rem;
+    color: #66b0ffcc;
+    text-shadow: 0 0 10px #66b0ff;
+    pointer-events: none;
+    user-select: none;
+  }
+  .card-info {
+    padding: 0.8rem 1rem;
+    color: #aad1ff;
+    font-weight: 600;
+    text-align: center;
+    z-index: 10;
+  }
+  .subscribe-btn {
+    display: block;
+    margin: 0.6rem auto 1rem;
+    background-color: #0055cc;
+    border: none;
+    padding: 0.5rem 1.6rem;
+    border-radius: 30px;
+    color: #cce4ff;
+    font-weight: 700;
+    box-shadow: 0 0 8px #3399ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .subscribe-btn:hover {
+    background-color: #3388ff;
+    box-shadow: 0 0 20px #66b0ff;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem 0 2rem;
+    color: #446688;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+  footer a {
+    color: #6699ff;
+    margin: 0 0.7rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  footer a:hover {
+    color: #99bbff;
+    text-shadow: 0 0 5px #99bbff;
+  }
+  @media (max-width: 640px) {
+    .profile {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .profile-info h1 {
+      font-size: 2rem;
+    }
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    nav ul {
+      gap: 0.9rem;
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  main, .photo-card, .profile {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="logo">OnlyGirl</div>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Explorar</a></li>
+      <li><a href="#">más+</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="profile" aria-label="Perfil del usuario St5nd1rd">
+    <div class="profile-pic" aria-hidden="true">
+      <img src="https://i.postimg.cc/4N3cFMF6/Screenshot-20250718-090704-Whats-App.jpg" alt="Foto censurada del usuario St5nd1rd" />
+    </div>
+    <div class="profile-info">
+      <h1>@St5nd1rd</h1>
+      <p>Contenido privado - Suscríbete para ver más</p>
+      <p class="private-msg">Este perfil es privado y sólo accesible a suscriptores.</p>
+    </div>
+  </section>
+
+  <section class="gallery" aria-label="Galería de fotos privadas de St5nd1rd">
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/ydhXhZpv/Screenshot-20250805-151922-Tik-Tok-Lite.jpg" alt="Foto privada 1" />
+      <span class="lock-icon" aria-hidden="true">🔒</span>
+      <div class="card-info">
+        Foto privada #1
+        <button class="subscribe-btn" type="button">Suscríbete para desbloquear</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/zGbgqhN3/20250806-202347.jpg" alt="Foto privada 2" />
+      <span class="lock-icon" aria-hidden="true">🔒</span>
+      <div class="card-info">
+        Foto privada #2
+        <button class="subscribe-btn" type="button">Suscríbete para desbloquear</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/xT7XpdmQ/20250723-063425.jpg" alt="Foto privada 3" />
+      <span class="lock-icon" aria-hidden="true">🔒</span>
+      <div class="card-info">
+        Foto privada #3
+        <button class="subscribe-btn" type="button">Suscríbete para desbloquear</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/GpnHrSzS/Screenshot-20250805-151922-Tik-Tok-Lite.jpg" alt="Foto privada 4" />
+      <span class="lock-icon" aria-hidden="true">🔒</span>
+      <div class="card-info">
+        Foto privada #4
+        <button class="subscribe-btn" type="button">Suscríbete para desbloquear</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/SRPxPZJd/20250723-012617.jpg" alt="Foto privada 5" />
+      <span class="lock-icon" aria-hidden="true">🔒</span>
+      <div class="card-info">
+        Foto privada #5
+        <button class="subscribe-btn" type="button">Suscríbete para desbloquear</button>
+      </div>
+    </article>
+  </section>
+</main>
+<footer>
+  <a href="#">Términos</a> | 
+  <a href="#">Privacidad</a> | 
+  <a href="#">Ayuda</a> | 
+  <span>© OnlyGirl 2025</span>
+</footer>
+</body>
+</html>
+      0 0 8px #66b0ff,
+      0 0 15px #3399ff;
+  }
+  nav ul {
+    display: flex;
+    gap: 1.4rem;
+  }
+  nav ul li {
+    list-style: none;
+  }
+  nav ul li a {
+    color: #b0c7ff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #3399ff;
+    text-shadow: 0 0 5px #3399ff;
+  }
+  main {
+    max-width: 1100px;
+    margin: 5rem auto 3rem;
+    padding: 0 1rem;
+  }
+  .profile {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    background: rgba(0, 31, 63, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 1.5rem;
     box-shadow:
       0 0 12px #3399ffaa;
   }
