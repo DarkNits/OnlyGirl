@@ -1,132 +1,267 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil Exclusivo - St5nd1rd</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    header {
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OnlyGirl - Perfil St5nd1rd</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    background: #000;
+    color: #b0c7ff;
+    font-family: 'Inter', sans-serif;
+  }
+  nav {
+    background-color: #001f3f;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 0 15px #001f3f88;
+  }
+  nav .container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+  }
+  nav .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #66b0ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #66b0ff, 0 0 15px #3399ff;
+  }
+  nav ul {
+    display: flex;
+    gap: 1.4rem;
+  }
+  nav ul li {
+    list-style: none;
+  }
+  nav ul li a {
+    color: #b0c7ff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #3399ff;
+    text-shadow: 0 0 5px #3399ff;
+  }
+  main {
+    max-width: 1100px;
+    margin: 5rem auto 3rem;
+    padding: 0 1rem;
+  }
+  .profile {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    background: rgba(0, 31, 63, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 12px #3399ffaa;
+  }
+  .profile-pic {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 9999px;
+    overflow: hidden;
+    filter: blur(10px) brightness(0.6);
+    cursor: not-allowed;
+  }
+  .profile-pic::after {
+    content: "🔒";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #66b0ffcc;
+    text-shadow: 0 0 10px #66b0ff;
+    pointer-events: none;
+  }
+  .profile-info {
+    flex: 1;
+    min-width: 280px;
+  }
+  .profile-info h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #66b0ff;
+    text-shadow: 0 0 10px #3399ff, 0 0 20px #66b0ff;
+    margin-bottom: 0.3rem;
+  }
+  .gallery {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .photo-card {
+    position: relative;
+    background: rgba(0, 31, 63, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #1a3a66cc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .photo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #3399ffcc;
+  }
+  .photo-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    filter: blur(18px) brightness(0.4);
+    pointer-events: none;
+  }
+  .photo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(51,153,255,0.2));
+    backdrop-filter: blur(3px);
+  }
+  .lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.2rem;
+    color: #66b0ffcc;
+    text-shadow: 0 0 10px #66b0ff;
+    pointer-events: none;
+  }
+  .card-info {
+    padding: 0.8rem 1rem;
+    color: #aad1ff;
+    font-weight: 600;
+    text-align: center;
+  }
+  .subscribe-btn {
+    display: block;
+    margin: 0.6rem auto 1rem;
+    background-color: #0055cc;
+    border: none;
+    padding: 0.5rem 1.6rem;
+    border-radius: 30px;
+    color: #cce4ff;
+    font-weight: 700;
+    box-shadow: 0 0 8px #3399ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .subscribe-btn:hover {
+    background-color: #3388ff;
+    box-shadow: 0 0 20px #66b0ff;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem 0 2rem;
+    color: #446688;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 640px) {
+    .profile {
+      flex-direction: column;
       text-align: center;
-      padding: 3rem 1rem 1rem;
-      background: linear-gradient(to bottom, #001933, #000);
     }
-
-    h1 {
-      color: #00aaff;
+    .profile-info h1 {
       font-size: 2rem;
-      margin-bottom: .5rem;
     }
-
-    p {
-      color: #ccc;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .photo {
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #111;
-      border: 2px solid #003366;
-      cursor: not-allowed;
-      filter: blur(30px) brightness(0.3) contrast(0.7);
-      pointer-events: none; /* evita clics */
-    }
-
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0.4;
-    }
-
-    .photo::after {
-      content: "🔒 Contenido bloqueado";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #00aaff;
-      font-weight: bold;
-      background: rgba(0,0,0,0.6);
-      padding: .5rem 1rem;
-      border-radius: 6px;
-      text-shadow: 0 0 5px #00aaff;
-    }
-
-    .title {
-      text-align: center;
-      margin-top: .3rem;
-      color: #aaa;
-      font-style: italic;
-      font-size: .9rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #666;
-      font-size: .9rem;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 1.5rem; }
-      .photo::after { font-size: .8rem; }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>@St5nd1rd 💎</h1>
-    <p>Contenido exclusivo. Acceso solo para suscriptores.</p>
-  </header>
-
-  <section class="gallery">
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1015/400/300" alt="En la playa"></div>
-      <div class="title">🏖️ En la playa</div>
+<nav>
+  <div class="container">
+    <div class="logo">OnlyGirl</div>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Explorar</a></li>
+      <li><a href="#">más+</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="profile">
+    <div class="profile-pic">
+      <img src="https://i.postimg.cc/4N3cFMF6/Screenshot-20250718-090704-Whats-App.jpg" alt="Foto censurada del usuario St5nd1rd" />
     </div>
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1025/400/300" alt="En la suit"></div>
-      <div class="title">🏩 En la suit</div>
-    </div>
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1035/400/300" alt="Selfie nocturna"></div>
-      <div class="title">🌙 Selfie nocturna</div>
-    </div>
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1045/400/300" alt="Día de estudio"></div>
-      <div class="title">📚 Día de estudio</div>
-    </div>
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1055/400/300" alt="Después del gym"></div>
-      <div class="title">💪 Después del gym</div>
-    </div>
-    <div>
-      <div class="photo"><img src="https://picsum.photos/id/1065/400/300" alt="Modo chill"></div>
-      <div class="title">😎 Modo chill</div>
+    <div class="profile-info">
+      <h1>@St5nd1rd</h1>
+      <p>Contenido privado - Suscríbete para ver más</p>
     </div>
   </section>
 
-  <footer>
-    © 2025 St5nd1rd - Todos los derechos reservados.
-  </footer>
+  <section class="gallery">
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/ydhXhZpv/Screenshot-20250805-151922-Tik-Tok-Lite.jpg" alt="Foto privada 1" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        En la playa 🌴
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/zGbgqhN3/20250806-202347.jpg" alt="Foto privada 2" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        En la suite 🛏️
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/xT7XpdmQ/20250723-063425.jpg" alt="Foto privada 3" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        Noche de luces ✨
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/GpnHrSzS/Screenshot-20250805-151922-Tik-Tok-Lite.jpg" alt="Foto privada 4" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        Día casual 😎
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/SRPxPZJd/20250723-012617.jpg" alt="Foto privada 5" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        En el balcón 🌆
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+
+    <article class="photo-card">
+      <img src="https://i.postimg.cc/SRPxPZJd/20250723-012617.jpg" alt="Foto privada 6" />
+      <span class="lock-icon">🔒</span>
+      <div class="card-info">
+        Selfie privada 📸
+        <button class="subscribe-btn">Suscríbete</button>
+      </div>
+    </article>
+  </section>
+</main>
+<footer>
+  <a href="#">Términos</a> | 
+  <a href="#">Privacidad</a> | 
+  <a href="#">Ayuda</a> | 
+  <span>© OnlyGirl 2025</span>
+</footer>
 </body>
 </html>
